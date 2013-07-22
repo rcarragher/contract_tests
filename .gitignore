@@ -8,6 +8,11 @@
 
 *.class
 
+#Build files
+api/build/
+client/build/
+contracts/build/
+
 # Package Files #
 *.jar
 *.war

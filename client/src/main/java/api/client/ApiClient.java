@@ -25,8 +25,8 @@ public class ApiClient {
 
         JsonParser parser = new JsonParser();
         JsonObject jsonObject = (JsonObject)parser.parse(apiClientResponse);
-        //ApiClientResponse response = new ApiClientResponse(jsonObject.get("id").getAsLong(),jsonObject.get("name").getAsString());
-        ApiClientResponse response = new ApiClientResponse(jsonObject.get("id").getAsLong(),jsonObject.get("name").getAsString(),jsonObject.get("address").getAsString());
+        ApiClientResponse response = new ApiClientResponse(jsonObject.get("id").getAsLong(),jsonObject.get("name").getAsString());
+        //ApiClientResponse response = new ApiClientResponse(jsonObject.get("id").getAsLong(),jsonObject.get("name").getAsString(),jsonObject.get("address").getAsString());
 
         return response;
     }

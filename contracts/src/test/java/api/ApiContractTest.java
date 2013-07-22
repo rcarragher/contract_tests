@@ -38,33 +38,20 @@ public class ApiContractTest {
     }
 
     private void assertItIsThere(JsonElement responseJson,JsonElement contractElements){
-        if (contractElements.isJsonObject()){
-            assertThat(responseJson.isJsonObject()).isTrue();
-            JsonObject responseJsonAsObject = responseJson.getAsJsonObject();
-            for(Map.Entry<String,JsonElement> element: contractElements.getAsJsonObject().entrySet()){
-                //Ensure the response has the fields we're expecting.
-                assertThat(responseJsonAsObject.get(element.getKey())).isInstanceOf(JsonElement.class);
-                //Ensure that children of this object are also there.
+        assertThat(responseJson.isJsonObject()).isTrue();
+        JsonObject responseJsonAsObject = responseJson.getAsJsonObject();
+        for(Map.Entry<String,JsonElement> element: contractElements.getAsJsonObject().entrySet()){
+            //Ensure the response has the fields we're expecting.
+            assertThat(responseJsonAsObject.get(element.getKey())).isInstanceOf(JsonElement.class);
+            //Ensure that children of this object are also there.
+            if (element.getValue().isJsonObject()){
                 assertItIsThere(responseJsonAsObject.get(element.getKey()),element.getValue());
             }
-        } else {
-            assertJsonTypesMatch(responseJson,contractElements);
-        }
-    }
-
-    private void assertJsonTypesMatch(JsonElement responseElement,JsonElement contractElement){
-        if (contractElements.isJsonArray()){
-            assertThat(responseElement.isJsonArray()).isTrue();
-        } else if (contractElements.isJsonPrimitive()){
-            assertThat(responseElement.isJsonPrimitive()).isTrue();
-        } else {
-            //It's a null type?
-            assertThat(responseElement.isJsonNull()).isTrue();
         }
     }
 
     private String makeRequest(){
       //This should really call the service...
-      return "{id: 1, name:\"Rick\", address:\"1 Main Street\",zip: \"10001\"}";
+      return "{id: 1, name:\"Rick\", address: { street: \"1 Main Street\",zip: \"10001\"}}";
     }
 }
