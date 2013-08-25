@@ -3,9 +3,6 @@ package api.client;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-/**
- * User: Thoughtworker Date: 7/17/13 Time: 7:51 PM
- */
 public class ApiClient {
 
     private ApiService service;
@@ -17,7 +14,7 @@ public class ApiClient {
     public static void main(String []args) throws Exception{
 
         ApiClientResponse aResponse = new ApiClient(new ApiServiceImpl()).consumeEndpoint();
-        System.out.println("My response is id:" + aResponse.id + " name:" + aResponse.name);
+        System.out.println("My response is first_name:" + aResponse.first_name + " last_name:" + aResponse.last_name + " zip:" + aResponse.zip);
     }
 
     public ApiClientResponse consumeEndpoint() throws Exception{
@@ -25,7 +22,9 @@ public class ApiClient {
 
         JsonParser parser = new JsonParser();
         JsonObject jsonObject = (JsonObject)parser.parse(apiClientResponse);
-        ApiClientResponse response = new ApiClientResponse(jsonObject.get("id").getAsLong(),jsonObject.get("name").getAsString());
+        ApiClientResponse response = new ApiClientResponse(jsonObject.get("first_name").getAsString(),
+                                                           jsonObject.get("last_name").getAsString(),
+                                                           jsonObject.get("address").getAsJsonObject().get("zip").getAsString());
         //ApiClientResponse response = new ApiClientResponse(jsonObject.get("id").getAsLong(),jsonObject.get("name").getAsString(),jsonObject.get("address").getAsString());
 
         return response;

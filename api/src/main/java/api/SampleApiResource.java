@@ -8,9 +8,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * User: Thoughtworker Date: 7/17/13 Time: 6:24 PM
- */
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 public class SampleApiResource {
@@ -23,6 +20,6 @@ public class SampleApiResource {
     @GET
     @Timed
     public SampleApiContent getContent(){
-        return new SampleApiContent(counter.incrementAndGet(),"Joe User","1 Main Street","10001");
+        return new SampleApiContent(counter.incrementAndGet(),"Joe","User",new SampleApiAddress("1 Main Street","10001"));
     }
 }

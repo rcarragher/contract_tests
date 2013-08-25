@@ -2,30 +2,31 @@ package api;
 
 public class SampleApiContent {
     private final long id;
-    private final String name;
-    private final String address;
-    private final String zip;
+    private final String first_name;
+    private final String last_name;
+    private final SampleApiAddress address;
 
-    public SampleApiContent(long id, String name, String address, String zip) {
+    public SampleApiContent(long id, String first_name, String last_name, SampleApiAddress address) {
         this.id = id;
-        this.name = name;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.address = address;
-        this.zip = zip;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public String getAddress() {
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public SampleApiAddress getAddress() {
         return address;
     }
 
-    public String getZip() {
-        return zip;
-    }
 }

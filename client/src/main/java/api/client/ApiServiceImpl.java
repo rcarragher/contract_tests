@@ -6,9 +6,6 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
-/**
- * User: Thoughtworker Date: 7/18/13 Time: 8:37 AM
- */
 public class ApiServiceImpl extends ApiService {
 
     static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();

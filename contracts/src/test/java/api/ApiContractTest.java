@@ -10,19 +10,18 @@ import java.util.Map;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-/**
- * User: Thoughtworker Date: 7/18/13 Time: 8:44 AM
- */
 public class ApiContractTest {
 
     private JsonElement contractElements;
 
-    public final static String CONTRACT="{id: 1, name:\"Rick\",address: { zip: \"10001\"}}";
+    public static final String THE_CONTRACT="{first_name:\"Rick\", " +
+            "last_name:\"Carragher\"," +
+            "address: { zip: \"10001\"}}";
 
     @Before
     public void setup() {
         JsonParser parser = new JsonParser();
-        contractElements = parser.parse(CONTRACT);
+        contractElements = parser.parse(THE_CONTRACT);
     }
 
     @Test
@@ -52,6 +51,6 @@ public class ApiContractTest {
 
     private String makeRequest(){
       //This should really call the service...
-      return "{id: 1, name:\"Rick\", address: { street: \"1 Main Street\",zip: \"10001\"}}";
+      return "{first_name:\"Rick\", last_name: \"Carragher\", address: { street: \"1 Main Street\",zip: \"10001\"}}";
     }
 }

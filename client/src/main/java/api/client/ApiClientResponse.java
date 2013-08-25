@@ -6,23 +6,19 @@ import com.google.api.client.util.Key;
  * User: Thoughtworker Date: 7/18/13 Time: 8:35 AM
  */
 public class ApiClientResponse {
-    public ApiClientResponse(long id, String name) {
-        this.id = id;
-        this.name = name;
+    public ApiClientResponse(String first_name, String last_name, String zip) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.zip = zip;
+
     }
 
-//    public ApiClientResponse(long id, String name,String address) {
-//        this.id = id;
-//        this.name = name;
-//        this.address = address;
-//    }
+    @Key
+    String first_name;
 
     @Key
-    long id;
+    String last_name;
 
     @Key
-    String name;
-
-//    @Key
-//    String address;
+    String zip;
 }
